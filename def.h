@@ -6,6 +6,9 @@
 
 #include "apue.h"
 
+typedef int Myfunc(const char *, const struct stat *, int);
+
+char *filepermstr(mode_t perm, int flags);
 
 static Myfunc myfunc;
 
@@ -17,7 +20,9 @@ int Myfunc(const char*, const struct stat*, int);
 
 int filestate(int,const char* , int);//1.pathname
 
-int fileowner(const char*,struct stat*, const char*, int);//1.name 2.type
+char *filepermstr(mode_t perm, int flags);
+
+//int fileowner(const char*,struct stat*, const char*, int);//1.name 2.type
 
 int cirpid(pid_t pid, const char*, const char*);//1.cmd or string 2.file
 
@@ -25,9 +30,9 @@ int ciruid(uid_t uid, const char*, int);
 
 int cirgid(gid_t gid, const char*, int);//1.real,saved,effective
 
-int check_usrid(int);
+char* check_usrid(uid_t uid);
 
-int check_grpid(int);
+char* check_grpid(gid_t gid);
 
 int prc_con_file(int, const char*, fpos_t* restrict pos, off_t offset);//1.whence 2.pathname/filename
 
